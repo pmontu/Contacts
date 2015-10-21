@@ -21,7 +21,9 @@
   ],
   "dependencies": {
     "angular-bootstrap": "~0.14.2",
-    "angular-ui-grid": "ng-grid#~3.0.7",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "angular-ui-grid": "~3.0.7",
+    "angular-route": "~1.4.7",
+    "angular-resource": "~1.4.7"
   }
 }
