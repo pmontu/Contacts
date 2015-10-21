@@ -3,6 +3,9 @@ from django.db import models
 class Contact(models.Model):
 	name = models.CharField(max_length = 200)
 
+	def __unicode__(self):
+		return self.name
+
 class Address(models.Model):
 	number = models.CharField(max_length = 200)
 	street = models.CharField(max_length = 200)
@@ -10,6 +13,9 @@ class Address(models.Model):
 	city = models.CharField(max_length = 200)
 	pincode = models.CharField(max_length = 200)
 	contact = models.ForeignKey(Contact)
+
+	def __unicode__(self):
+		return  "{0} {1} {2} {3} {4} {5}".format(self.contact.name, self.number, self.street, self.area, self.city, self.pincode)
 
 class Phone(models.Model):
 
@@ -19,10 +25,13 @@ class Phone(models.Model):
 	PHONE_TYPE_CHOICES = (
 		(WORK, 'Work'),
 		(HOME, 'Home'),
-		(CELL, 'Mobile'),
+		(CELL, 'Cell'),
 	)
 	phone_type = models.CharField(max_length=2,
 		choices=PHONE_TYPE_CHOICES,
 		default=CELL)
 	number = models.CharField(max_length = 50)
 	contact = models.ForeignKey(Contact)
+
+	def __unicode__(self):
+		return "{0} {1} {2}".format(self.contact.name, self.get_phone_type_display(), self.number)

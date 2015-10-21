@@ -1,0 +1,27 @@
+{
+  "name": "contacts",
+  "homepage": "https://github.com/pmontu/Contacts",
+  "authors": [
+    "pmontu <pmontu@gmail.com>"
+  ],
+  "description": "contact address and phone database",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "contacts"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.14.2",
+    "angular-ui-grid": "ng-grid#~3.0.7",
+    "bootstrap": "~3.3.5"
+  }
+}
