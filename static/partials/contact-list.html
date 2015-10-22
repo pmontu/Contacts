@@ -1,13 +1,21 @@
 <div class="container">
 
-<div class="page-header">
-  <h1>Costsheet <small> Add Item</small></h1>
-</div>
+	<div class="page-header">
+	  <h1>Contact Book <small> List</small></h1>
+	</div>
 
-<div ng-include src="'partials/nav.html'"></div>
+	<div ng-include src="'partials/nav.html'"></div>
 
-{{1+1+test}}
-
-<pre>{{contacts | json}}</pre>
+	<div class="row">
+		<div class="col-sm-4">
+			<div ui-grid="contactGridOptions"></div>
+		</div>
+		<div class="col-sm-4">
+			<div ui-grid="phoneGridOptions"></div>
+		</div>
+		<div class="col-sm-4">
+			<div ui-grid="addressGridOptions"></div>
+		</div>
+	</div>
 
 </div>
