@@ -13,6 +13,11 @@ app.config([
   function($routeProvider, $resourceProvider, $httpProvider) {
     $routeProvider.
       when('/', {
+        templateUrl: 'partials/home.html',
+        controller: 'HomeCtrl',
+        activetab: 'home'
+      }).
+      when('/list', {
         templateUrl: 'partials/contact-list.html',
         controller: 'ContactsListCtrl',
         activetab: 'list'

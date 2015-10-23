@@ -2,6 +2,7 @@ from django.db import models
 
 class Contact(models.Model):
 	name = models.CharField(max_length = 200)
+	image = models.ImageField(upload_to='contacts/', default="contacts/no-img.png")
 
 	def __unicode__(self):
 		return self.name

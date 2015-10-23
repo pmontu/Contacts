@@ -10,64 +10,31 @@ ctrls.controller("ContactsListCtrl", [
 		
 		$scope.$route = $route;
 
-		$scope.contactGridOptions = { 
-	        data: 'contacts',
-    		enableFiltering: true,
-	        columnDefs: [
-	        	{
-	        		field:'name',
-	        		displayName:'Name',
-	        		filter:{
-	        			placeholder:"search by name"
-	        		}
-	        	}
-	        ]
-	    };
+		Contact.query(function(data){
 
-		$scope.phoneGridOptions = { 
-	        data: 'phones',
-    		enableFiltering: true,
-	        columnDefs: [
-	        	{
-	        		field:'number',
-	        		displayName:'Number',
-	        		filter:{
-	        			placeholder:"search by number"
-	        		}
-	        	}
-	        ]
-	    };
+			$scope.contacts = data;
+		});
 
-		$scope.addressGridOptions = { 
-	        data: 'addresses',
-    		enableFiltering: true,
-	        columnDefs: [
-	        	{
-	        		field:'number',
-	        		displayName:'#',
-	        		enableFiltering: false
-	        	},
-	        	{
-	        		field:'street',
-	        		displayName:'Street',
-	        		enableFiltering: false
-	        	},
-	        	{
-	        		field:'area',
-	        		displayName:'Area',
-	        		enableFiltering: false
-	        	},
-	        	{
-	        		field:'city',
-	        		displayName:'City'
-	        	},
-	        	{
-	        		field:'pincode',
-	        		displayName:'Pincode',
-	        		enableFiltering: false
-	        	}
-	        ]
-	    };
+		Phone.query(function(data){
+
+			$scope.phones = data;
+		});
+
+		Address.query(function(data){
+
+			$scope.addresses = data;
+		});
+	}]);
+
+ctrls.controller("HomeCtrl", [
+	"$scope",
+	"Contact",
+	'$route',
+	'Address',
+	'Phone',
+	function($scope, Contact, $route, Address, Phone){
+		
+		$scope.$route = $route;
 
 		Contact.query(function(data){
 
