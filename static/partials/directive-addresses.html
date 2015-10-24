@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-	<div class="panel-body" ng-repeat="address in addresses">
+	<div class="panel-body" ng-repeat="address in addresses | filter:{contact:contact.url}">
 
 		<div class="form-horizontal">
 

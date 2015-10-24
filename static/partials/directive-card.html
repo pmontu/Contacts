@@ -5,7 +5,7 @@
 		</div>
 		<div class="col-sm-6">
 			<div>{{contact.name}}</div>
-			<div ng-repeat="phone in phones | filter:contact.url">{{phone.number}}</div>
+			<div ng-repeat="phone in phones | filter:{contact:contact.url}">{{phone.number}}</div>
 		</div>
 	</div>
 </div>

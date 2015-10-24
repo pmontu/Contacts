@@ -1,17 +1,25 @@
 directives = angular.module("contactsDirectives", []);
 
-directives.directive("addresses", function(){
+directives.directive("addresses", [
+	"Contact",
+	"Address",
+	function(Contact, Address){
 	return {
 		restrict:"E",
 		scope:{
-			addresses:"="
+			id:"="
 		},
 		templateUrl:'partials/directive-addresses.html',
-		link:function(element, $scope, attributes){
-
+		link:function($scope, element, attrs){
+			Contact.get({id:$scope.id}, function(data){
+				$scope.contact = data;
+			});
+			Address.query(function(data){
+				$scope.addresses = data;
+			});
 		}
 	}
-});
+}]);
 
 directives.directive("card", function(Phone, Contact){
 	return {
@@ -23,11 +31,34 @@ directives.directive("card", function(Phone, Contact){
 		controller:function($scope){
 			Contact.get({id:$scope.id}, function(data){
 				$scope.contact = data;
-				Phone.query({contact:$scope.contact.url}, function(data){
-					$scope.phones = data;
-				});
-			})
+			});
+			Phone.query(function(data){
+				$scope.phones = data;
+			});
 			
 		}
 	}
 });
+
+directives.directive("phones", [
+	"Contact",
+	"Phone",
+	function(Contact, Phone){
+	return {
+		restrict:"E",
+		scope:{
+			id:"="
+		},
+		templateUrl:'partials/directive-phones.html',
+		controller:function($scope){
+
+			$scope.masterPhoneTypes = {WK:'Work',HO:'Home',CE:'Cell'};
+			Contact.get({id:$scope.id}, function(data){
+				$scope.contact = data;
+			});
+			Phone.query(function(data){
+				$scope.phones = data;
+			});
+		}
+	}
+}]);
