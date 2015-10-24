@@ -4,11 +4,19 @@
 	<div class="col-sm-3">
 		<div ng-include src="'partials/nav_side.html'"></div>
 	</div>
-	<div class="col-sm-3">
-		<div class="row">
-			<img src="/media/contacts/no-img.png" alt="contact1 photo" class="img-thumbnail" width="140px" height="140px">
+	<div class="col-sm-9">
+		<div class="col-sm-4" ng-repeat="contact in contacts">
+			<div class="well">
+				<div class="row">
+					<div class="col-sm-6">
+						<img ng-src="{{contact.image}}" alt="contact1 photo" class="img-circle" width="70px" height="70px">
+					</div>
+					<div class="col-sm-6">
+						<div>{{contact.name}}</div>
+						<div ng-repeat="phone in phones | filter:contact.url">{{phone.number}}</div>
+					</div>
+				</div>
+			</div class="well">
 		</div>
-	</div>
-	<div class="col-sm-6">
 	</div>
 </div>
