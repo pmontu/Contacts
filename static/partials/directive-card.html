@@ -1,0 +1,11 @@
+<div class="well">
+	<div class="row">
+		<div class="col-sm-6">
+			<img ng-src="{{contact.image}}" alt="contact photo" class="img-circle" width="70px" height="70px">
+		</div>
+		<div class="col-sm-6">
+			<div>{{contact.name}}</div>
+			<div ng-repeat="phone in phones | filter:contact.url">{{phone.number}}</div>
+		</div>
+	</div>
+</div>

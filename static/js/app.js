@@ -4,6 +4,7 @@ var app = angular.module('contactsApp', [
   'ui.bootstrap',
   'ui.grid',
   'contactsServices',
+  'contactsDirectives'
 ]);
 
 app.config([
@@ -21,6 +22,11 @@ app.config([
         templateUrl: 'partials/contact-list.html',
         controller: 'ContactsListCtrl',
         activetab: 'list'
+      }).
+      when('/edit/:id', {
+        templateUrl: 'partials/contact-edit.html',
+        controller: 'ContactEditCtrl',
+        activetab: 'edit'
       });
     $resourceProvider.defaults.stripTrailingSlashes = true;
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';

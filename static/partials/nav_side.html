@@ -1,6 +1,5 @@
 <ul class="nav nav-pills nav-stacked">
-	<li class="active"><a href="#">Home</a></li>
-	<li><a href="#">Menu 1</a></li>
-	<li><a href="#">Menu 2</a></li>
-	<li><a href="#">Menu 3</a></li>
+	<li ng-class="{active: $route.current.activetab == 'home'}"><a href="#/">Home</a></li>
+	<li ng-class="{active: $route.current.activetab == 'list'}"><a href="#/list">Contacts</a></li>
+	<li ng-class="{active: $route.current.activetab == 'edit'}"><a href="#/edit/1">Edit</a></li>
 </ul>

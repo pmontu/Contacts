@@ -4,7 +4,7 @@ from contactsbook.models import *
 class ContactSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Contact
-        fields = ('url', 'name', 'image')
+        fields = ('url', 'name', 'image', 'id')
 
 class AddressSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
