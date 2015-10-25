@@ -21,7 +21,10 @@ directives.directive("addresses", [
 	}
 }]);
 
-directives.directive("card", function(Phone, Contact){
+directives.directive("card", [
+	"Phone2",
+	"Contact2",
+	function(Phone2, Contact2){
 	return {
 		restrict:"E",
 		scope:{
@@ -29,16 +32,19 @@ directives.directive("card", function(Phone, Contact){
 		},
 		templateUrl:'partials/directive-card.html',
 		controller:function($scope){
-			Contact.get({id:$scope.id}, function(data){
+
+			Contact2.get($scope.id).
+			success(function(data){
 				$scope.contact = data;
+				Phone2.query({contact:$scope.contact.id}).
+					success(function(data){
+						$scope.phones = data;
+				});
 			});
-			Phone.query(function(data){
-				$scope.phones = data;
-			});
-			
+
 		}
 	}
-});
+}]);
 
 directives.directive("phones", [
 	"Contact",

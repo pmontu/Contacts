@@ -3,8 +3,8 @@
 
 		<div class="form-horizontal">
 
-			<div class="form-group" ng-repeat="phone in phones | filter:{contact:contact.url}">
-				<label class="col-sm-2 control-label">{{masterPhoneTypes[phone.phone_type]}}</label>
+			<div class="form-group" ng-repeat="phone in phones">
+				<label class="col-sm-2 control-label">{{phone.phone_type_display}}</label>
 				<div class="col-sm-8">
 					<div class="input-group">
 						<input type="text" class="form-control" ng-model="phone.number">
