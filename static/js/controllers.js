@@ -2,28 +2,19 @@ ctrls = angular.module("contactsController", []);
 
 ctrls.controller("ContactsListCtrl", [
 	"$scope",
-	"Contact",
+	"Contact2",
 	'$route',
 	'Address',
 	'Phone',
 	'$location',
-	function($scope, Contact, $route, Address, Phone, $location){
+	function($scope, Contact2, $route, Address, Phone, $location){
 		
 		$scope.$route = $route;
 
-		Contact.query(function(data){
+		Contact2.query().
+		success(function(data){
 
 			$scope.contacts = data;
-		});
-
-		Phone.query(function(data){
-
-			$scope.phones = data;
-		});
-
-		Address.query(function(data){
-
-			$scope.addresses = data;
 		});
 
 		$scope.editContact = function(contact_id){

@@ -21,6 +21,10 @@ services.factory('Contact2', [
 		return {
 			get: function(id){
 				return $http.get("/contactsbook/contact/get/" + id.toString())
+			},
+			query: function(data){
+				data = data || null;
+				return $http.post("/contactsbook/contact/", data)	
 			}
 		}
 }]);
@@ -30,7 +34,7 @@ services.factory('Phone2', [
 	function($http){
 		return {
 			query: function(data){
-				return $http.post("/contactsbook/contact/", data)
+				return $http.post("/contactsbook/phone/", data)
 			}
 		}
 }]);
