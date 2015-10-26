@@ -1,40 +1,35 @@
 services = angular.module("contactsServices", ['ngResource']);
 
-services.factory('Contact', ['$resource',
-	function($resource){
-		return $resource("/contact/:id");
-}]);
-
-services.factory('Address', ['$resource',
-	function($resource){
-		return $resource("/address/:id");
-}]);
-
-services.factory('Phone', ['$resource',
-	function($resource){
-		return $resource("/phone/:id");
-}]);
-
-services.factory('Contact2', [
+services.factory('Contact', [
 	'$http',
 	function($http){
 		return {
 			get: function(id){
-				return $http.get("/contactsbook/contact/get/" + id.toString())
+				return $http.get("/api/contact/get/" + id.toString())
 			},
 			query: function(data){
 				data = data || null;
-				return $http.post("/contactsbook/contact/", data)	
+				return $http.post("/api/contact/", data);
 			}
 		}
 }]);
 
-services.factory('Phone2', [
+services.factory('Phone', [
 	'$http',
 	function($http){
 		return {
 			query: function(data){
-				return $http.post("/contactsbook/phone/", data)
+				return $http.post("/api/phone/", data);
+			}
+		}
+}]);
+
+services.factory('Address', [
+	'$http',
+	function($http){
+		return {
+			query: function(data){
+				return $http.post("/api/address/", data);
 			}
 		}
 }]);

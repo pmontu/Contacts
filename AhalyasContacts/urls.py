@@ -15,19 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from rest_framework import routers
-from contactsbook.viewsets import *
 from django.conf import settings
 from django.conf.urls.static import static
 
-router = routers.DefaultRouter()
-router.register(r'contact', ContactViewSet)
-router.register(r'address', AddressViewSet)
-router.register(r'phone', PhoneViewSet)
-
 urlpatterns = [
-    url(r'^', include(router.urls)),
-    url(r'^contactsbook/', include('contactsbook.urls')),
+    url(r'^api/', include('contactsbook.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

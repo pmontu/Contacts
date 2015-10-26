@@ -6,6 +6,8 @@ class Contact(models.Model):
 
 	def __unicode__(self):
 		return self.name
+	def __str__(self):
+		return self.name
 
 class Address(models.Model):
 	number = models.CharField(max_length = 200)
@@ -16,6 +18,8 @@ class Address(models.Model):
 	contact = models.ForeignKey(Contact)
 
 	def __unicode__(self):
+		return  "{0} {1} {2} {3} {4} {5}".format(self.contact.name, self.number, self.street, self.area, self.city, self.pincode)
+	def __str__(self):
 		return  "{0} {1} {2} {3} {4} {5}".format(self.contact.name, self.number, self.street, self.area, self.city, self.pincode)
 
 class Phone(models.Model):
@@ -35,4 +39,7 @@ class Phone(models.Model):
 	contact = models.ForeignKey(Contact)
 
 	def __unicode__(self):
+		return "{0} {1} {2}".format(self.contact.name, self.get_phone_type_display(), self.number)
+
+	def __str__(self):
 		return "{0} {1} {2}".format(self.contact.name, self.get_phone_type_display(), self.number)

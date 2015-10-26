@@ -11,20 +11,22 @@ directives.directive("addresses", [
 		},
 		templateUrl:'partials/directive-addresses.html',
 		link:function($scope, element, attrs){
-			Contact.get({id:$scope.id}, function(data){
-				$scope.contact = data;
-			});
-			Address.query(function(data){
-				$scope.addresses = data;
+			Contact.get($scope.id).
+			success(function(data){
+				$scope.contact = data;	
+				Address.query({contact:$scope.contact.id}).
+				success(function(data){
+					$scope.addresses = data;
+				});
 			});
 		}
 	}
 }]);
 
 directives.directive("card", [
-	"Phone2",
-	"Contact2",
-	function(Phone2, Contact2){
+	"Phone",
+	"Contact",
+	function(Phone, Contact){
 	return {
 		restrict:"E",
 		scope:{
@@ -33,10 +35,10 @@ directives.directive("card", [
 		templateUrl:'partials/directive-card.html',
 		controller:function($scope){
 
-			Contact2.get($scope.id).
+			Contact.get($scope.id).
 			success(function(data){
 				$scope.contact = data;
-				Phone2.query({contact:$scope.contact.id}).
+				Phone.query({contact:$scope.contact.id}).
 					success(function(data){
 						$scope.phones = data;
 				});
@@ -58,12 +60,13 @@ directives.directive("phones", [
 		templateUrl:'partials/directive-phones.html',
 		controller:function($scope){
 
-			$scope.masterPhoneTypes = {WK:'Work',HO:'Home',CE:'Cell'};
-			Contact.get({id:$scope.id}, function(data){
+			Contact.get($scope.id).
+			success(function(data){
 				$scope.contact = data;
-			});
-			Phone.query(function(data){
-				$scope.phones = data;
+				Phone.query({contact:$scope.contact.id}).
+				success(function(data){
+					$scope.phones = data;
+				});
 			});
 		}
 	}

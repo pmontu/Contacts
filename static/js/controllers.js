@@ -2,16 +2,14 @@ ctrls = angular.module("contactsController", []);
 
 ctrls.controller("ContactsListCtrl", [
 	"$scope",
-	"Contact2",
+	"Contact",
 	'$route',
-	'Address',
-	'Phone',
 	'$location',
-	function($scope, Contact2, $route, Address, Phone, $location){
+	function($scope, Contact, $route, $location){
 		
 		$scope.$route = $route;
 
-		Contact2.query().
+		Contact.query().
 		success(function(data){
 
 			$scope.contacts = data;
@@ -24,28 +22,10 @@ ctrls.controller("ContactsListCtrl", [
 
 ctrls.controller("HomeCtrl", [
 	"$scope",
-	"Contact",
 	'$route',
-	'Address',
-	'Phone',
 	function($scope, Contact, $route, Address, Phone){
 		
 		$scope.$route = $route;
-
-		Contact.query(function(data){
-
-			$scope.contacts = data;
-		});
-
-		Phone.query(function(data){
-
-			$scope.phones = data;
-		});
-
-		Address.query(function(data){
-
-			$scope.addresses = data;
-		});
 	}]);
 
 ctrls.controller("ContactEditCtrl", [
@@ -57,8 +37,9 @@ ctrls.controller("ContactEditCtrl", [
 		$scope.id = $routeParams.id;
 		Contact.get({id:$scope.id}, function(data){
 			$scope.contact = data;
-			Address.query({contact:$scope.contact.url}, function(data){
+			Address.query({contact:$scope.contact.url}).
+			success(function(data){
 				$scope.addresses = data;
-			})
-		})
+			});
+		});
 	}]);

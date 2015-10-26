@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'contactsbook',
-    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,6 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'contacts',
         'USER': 'manoj',
+        "PASSWORD" : 'india'
     }
 }
 
