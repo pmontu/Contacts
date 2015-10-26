@@ -35,7 +35,8 @@ ctrls.controller("ContactEditCtrl", [
 	'Contact',
 	function($scope, $routeParams, Address, Contact){
 		$scope.id = $routeParams.id;
-		Contact.get({id:$scope.id}, function(data){
+		Contact.get($scope.id).
+		success(function(data){
 			$scope.contact = data;
 			Address.query({contact:$scope.contact.url}).
 			success(function(data){

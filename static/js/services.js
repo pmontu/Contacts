@@ -7,9 +7,8 @@ services.factory('Contact', [
 			get: function(id){
 				return $http.get("/api/contact/get/" + id.toString())
 			},
-			query: function(data){
-				data = data || null;
-				return $http.post("/api/contact/", data);
+			query: function(){
+				return $http.get("/api/contact/");
 			}
 		}
 }]);
@@ -20,6 +19,9 @@ services.factory('Phone', [
 		return {
 			query: function(data){
 				return $http.post("/api/phone/", data);
+			},
+			master: function(){
+				return $http.post("/api/phone/master/");
 			}
 		}
 }]);

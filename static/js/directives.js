@@ -60,6 +60,12 @@ directives.directive("phones", [
 		templateUrl:'partials/directive-phones.html',
 		controller:function($scope){
 
+			Phone.master().
+			success(function(data){
+				$scope.master = data;
+				$scope.phone_type = $scope.master[2].id;
+			});
+
 			Contact.get($scope.id).
 			success(function(data){
 				$scope.contact = data;

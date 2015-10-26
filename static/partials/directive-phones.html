@@ -14,6 +14,19 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="col-sm-3">
+			   		<select ng-model="phone_type" ng-options="phone_type.id as phone_type.name for phone_type in master" class="form-control"></select>
+				</div>
+				<div class="col-sm-7">
+					<div class="input-group">
+						<input type="text" class="form-control" ng-model="phone.number">
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+						</div>
+					</div>
+				</div>
+			</div>
 
 		</div>
 	</div>
